@@ -11,3 +11,4 @@ require('mini.completion').setup()
 require('lualine').setup()
 
 vim.lsp.enable({'gopls'})
+vim.lsp.enable({'rust_analyzer'})
