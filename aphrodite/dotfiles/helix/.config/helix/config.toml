@@ -1,0 +1,23 @@
+theme = "rose_pine_moon"
+
+[editor]
+line-number = "relative"
+mouse = false
+cursorline = true
+trim-trailing-whitespace = true
+popup-border = "all"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+center = ["version-control"]
+
+[keys.normal]
+C-y = ":sh zellij run -n Yazi -c -f -x 10%% -y 10%% --width 80%% --height 80%% -- bash ~/.local/bin/helix-yazi-picker open %{buffer_name}"

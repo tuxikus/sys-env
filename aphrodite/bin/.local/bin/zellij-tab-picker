@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+TAB=$(zellij action query-tab-names | fzf)
+
+if [ -n "$TAB" ]; then
+  zellij action go-to-tab-name "$TAB"
+fi

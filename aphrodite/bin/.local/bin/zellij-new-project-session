@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+TMP=$(mktemp)
+
+PROJECT_PATH=$(fd . "$HOME/projects" --max-depth 2 --type d | fzf)
+cd "$PROJECT_PATH"
+WORKTREES_COUNT=$(git worktree list | wc -l)
+
+if [ "$WORKTREES_COUNT" -gt 1 ]; then
+  PROJECT_PATH="$(pwd)/$(fd . --max-depth 1 | fzf)"
+  cd "$PROJECT_PATH"
+fi
+
+echo "$PROJECT_PATH" > "$TMP"
+${EDITOR:-nano} "$TMP"
+
+NAME=$(<"$TMP")
+rm "$TMP"
+
+zellij attach -c -b $(echo "$NAME" | xargs)
